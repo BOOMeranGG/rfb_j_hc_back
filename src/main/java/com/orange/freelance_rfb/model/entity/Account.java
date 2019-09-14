@@ -31,7 +31,7 @@ public class Account {
     private String account_type;
 
     @Column(name = "balance")
-    private Long balance;
+    private int balance;
 
     @Column(name = "sum_of_ratings")
     private int sumOfRatings;
