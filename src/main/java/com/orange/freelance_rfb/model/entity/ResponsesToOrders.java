@@ -20,8 +20,8 @@ public class ResponsesToOrders {
     @Column(name = "response_id")
     private Long responseId;
 
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "commentary")
+    private String commentary;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

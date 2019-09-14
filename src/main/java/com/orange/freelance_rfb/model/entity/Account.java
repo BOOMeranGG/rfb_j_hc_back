@@ -48,6 +48,4 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private Set<Portfolio> portfolios;
 
-    @OneToMany(mappedBy = "account")
-    private Set<Transaction> transactions;
 }

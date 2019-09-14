@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -30,11 +31,19 @@ public class Order {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
+    @Column(name = "sum_of_transaction")
+    private Long sumOfTransaction;
+
+    @Column(name = "transaction_status")
+    private String transactionStatus;
+
+    @Column(name = "transaction_date")
+    private LocalDateTime transactionDate;
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "response_id")
-    private ResponsesToOrders responsesToOrders;
+    @OneToMany(mappedBy = "order")
+    private Set<ResponsesToOrders> responsesToOrders;
 }
