@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface AccountRepository
-    extends JpaRepository<String, Account> {
+    extends JpaRepository<Account, String> {
     List<Account> findByLogin(String login);
 }
