@@ -1,6 +1,5 @@
 package com.orange.freelance_rfb.model.entity;
 
-import com.orange.freelance_rfb.model.enums.AccountType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

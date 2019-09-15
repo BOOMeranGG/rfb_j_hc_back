@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PortfolioRepository
-    extends JpaRepository<Portfolio, Long> {
+        extends JpaRepository<Portfolio, Long> {
     List<Portfolio> findByAccount(Account account);
 }

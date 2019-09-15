@@ -19,7 +19,7 @@ public class PortfolioService {
         this.portfolioRepository = portfolioRepository;
     }
 
-    public void add(String login, String  info) {
+    public void add(String login, String info) {
         Portfolio portfolio = Portfolio
                 .builder()
                 .account(accountRepository.findByLogin(login))

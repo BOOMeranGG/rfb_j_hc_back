@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -44,6 +42,4 @@ public class Job {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @OneToMany(mappedBy = "job")
-    private Set<ResponsesToJob> responsesToJobs;
 }
