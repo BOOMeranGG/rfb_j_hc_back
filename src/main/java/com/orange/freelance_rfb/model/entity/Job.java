@@ -14,22 +14,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "job")
+public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Long orderId;
+    @Column(name = "job_id")
+    private Long jobId;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "order_status")
-    private String orderStatus;
-
-    @Column(name = "order_date")
-    private LocalDateTime orderDate;
+    @Column(name = "job_status")
+    private String jobStatus;
 
     @Column(name = "sum_of_transaction")
     private int sumOfTransaction;
@@ -37,13 +34,16 @@ public class Order {
     @Column(name = "transaction_status")
     private String transactionStatus;
 
-    @Column(name = "transaction_date")
-    private LocalDateTime transactionDate;
+    @Column(name = "rate")
+    private int rate;
+
+    @Column(name = "executor")
+    private String executor;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @OneToMany(mappedBy = "order")
-    private Set<ResponsesToOrders> responsesToOrders;
+    @OneToMany(mappedBy = "job")
+    private Set<ResponsesToJob> responsesToJobs;
 }

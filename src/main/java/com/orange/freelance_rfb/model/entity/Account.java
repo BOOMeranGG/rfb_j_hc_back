@@ -18,10 +18,14 @@ import java.util.Set;
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "account_id")
+    private Long accountId;
+
     @Column(name = "login")
     private String login;
 
-    @Column(name = "password")
+    @Column(name = "pass")
     private String password;
 
     @Column(name = "fullname")
@@ -40,12 +44,8 @@ public class Account {
     private int numberOfRatings;
 
     @OneToMany(mappedBy = "account")
-    private Set<Order> orders;
-
-    @OneToMany(mappedBy = "account")
-    private Set<Feedback> feedbacks;
-
-    @OneToMany(mappedBy = "account")
     private Set<Portfolio> portfolios;
 
+    @OneToMany(mappedBy = "account")
+    private Set<Job> jobs;
 }

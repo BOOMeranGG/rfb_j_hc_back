@@ -20,7 +20,7 @@ public class Portfolio {
     @Column(name = "portfolio_id")
     private Long portfolioId;
 
-    @Column(name = "info")
+    @Column(name = "inform")
     private String info;
 
     @ManyToOne

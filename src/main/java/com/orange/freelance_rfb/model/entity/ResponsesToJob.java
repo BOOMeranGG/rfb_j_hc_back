@@ -12,8 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "responses_to_orders")
-public class ResponsesToOrders {
+@Table(name = "responses_to_job")
+public class ResponsesToJob {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,10 @@ public class ResponsesToOrders {
     @Column(name = "commentary")
     private String commentary;
 
+    @Column(name = "author_id")
+    private int authorId;
+
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "job_id")
+    private Job job;
 }
