@@ -32,7 +32,7 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Column(name = "sum_of_transaction")
-    private Long sumOfTransaction;
+    private int sumOfTransaction;
 
     @Column(name = "transaction_status")
     private String transactionStatus;
