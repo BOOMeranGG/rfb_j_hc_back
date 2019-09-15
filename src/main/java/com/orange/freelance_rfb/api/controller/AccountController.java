@@ -2,7 +2,8 @@ package com.orange.freelance_rfb.api.controller;
 
 import com.orange.freelance_rfb.model.dto.FullAccountDto;
 import com.orange.freelance_rfb.model.dto.LoginDto;
-import org.springframework.http.HttpStatus;
+import com.orange.freelance_rfb.service.AccountService;
+import com.orange.freelance_rfb.service.PortfolioService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -10,37 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class AccountController {
 
-    @ResponseStatus(HttpStatus.CONFLICT)
-    void print() {
-        System.out.println(1);
-    }
+    private final AccountService accountService;
+    private final PortfolioService portfolioService;
 
-    @RequestMapping("/login")
-    public void login(@RequestBody LoginDto login, HttpServletResponse response) {
-        //TODO
-        if (login.getLogin().equals("login")) {
-            response.setStatus(200);
-            return;
-        }
-        response.setStatus(400);
+    public AccountController(AccountService accountService, PortfolioService portfolioService) {
+        this.accountService = accountService;
+        this.portfolioService = portfolioService;
     }
 
     @RequestMapping("/registration")
-    public void registration(@RequestBody LoginDto login) {
-        //TODO
+    public void registration(@RequestBody LoginDto login, HttpServletResponse response) {
+        if (accountService.registration(login.getLogin(), login.getPassword(), login.getFullname(), login.getAccountType())) {
+            response.setStatus(200);
+            return;
+        }
+        response.setStatus(300);
     }
 
     @RequestMapping("/money")
     public String moneyCheck(@RequestBody LoginDto login) {
-        //TODO
-        int money = 0;
-        return "{\"money\":\"" + money + "\"}";
+        return "{\"money\":\"" + accountService.checkMoney(login.getLogin()) + "\"}";
     }
 
     @GetMapping("/account")
     public FullAccountDto account(@RequestParam(value = "login") String login) {
-        //TODO
-        System.out.println(login);
-        return FullAccountDto.builder().build();
+        return accountService.getAccount(login, portfolioService.findByLogin(login));
     }
 }

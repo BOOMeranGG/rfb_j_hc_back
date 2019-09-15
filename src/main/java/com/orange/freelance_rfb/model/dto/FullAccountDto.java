@@ -10,7 +10,7 @@ import java.util.List;
 public class FullAccountDto {
     private String login;
     private String name;
-    private Double rating;
-    private List<FeedbackDto> feedbackList;
-    private List<PortfoliosDto> portfolioList;
+    private Integer ratingSum;
+    private Integer ratingNumber;
+    private List<PortfolioDto> portfolioList;
 }

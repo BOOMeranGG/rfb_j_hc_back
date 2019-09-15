@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class OrderDto {
+public class JobDto {
     private String login;
-    private Long orderId;
-    //TODO
+    private Long jobId;
 }
